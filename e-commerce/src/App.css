@@ -28,3 +28,22 @@ a:hover{
   list-style: none;
   padding-left: 10px;
 }
+
+
+.cards{
+  display: grid;
+  grid-template-areas: "card1 card2"
+                       "card3 card4" ;
+}
+
+.cards img{
+  height: 500px;
+  width: 400px;
+  border-radius: 5px;
+}
+
+.cards div{
+  padding-bottom: 10px;
+}
+
+
