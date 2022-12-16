@@ -5,7 +5,7 @@
         "price" : 75000,
         "size" : 40,
         "brand" : "nike",
-        "img" : "../images/1-AirJordanHighSatinSnake.webp"
+        "img" : "../images/1-AirJordanHighSatinSnake.jpg"
         
     },
     {
@@ -14,7 +14,7 @@
         "price" : 85000,
         "size" : 41,
         "brand" : "adidas",
-        "img" : "../images/2-AirJordan1LowBlackCourtPurple.webp"
+        "img" : "../images/2-AirJordan1LowBlackCourtPurple.jpg"
     },
     {
         "productId": 3,
@@ -22,7 +22,7 @@
         "price" : 68999,
         "size" : 43,
         "brand" : "jordam",
-        "img" : "../images/3-AirJordan1LowWhiteGymRed.webp"
+        "img" : "../images/3-AirJordan1LowWhiteGymRed.jpg"
     },
     {
         "productId": 4,
@@ -30,7 +30,7 @@
         "price" : 72399,
         "size" : 42,
         "brand" : "jordan",
-        "img" : "../images/4-AirJordan1LowRoyalYellow.webp"
+        "img" : "../images/4-AirJordan1LowRoyalYellow.jpg"
     },
     {
         "productId": 5,
@@ -38,7 +38,7 @@
         "price" : 75999,
         "size" : 45,
         "brand" : "jordan",
-        "img" : "../images/5-AirJordan1MidMilitaryOlive.webp"
+        "img" : "../images/5-AirJordan1MidMilitaryOlive.jpg"
     },
     {
         "productId": 6,
@@ -46,7 +46,7 @@
         "price" : 58879,
         "size" : 41,
         "brand" : "jordan",
-        "img" : "../images/6-AirJordan4Lightning.webp"
+        "img" : "../images/6-AirJordan4Lightning.jpg"
     },
     {
         "productId": 7,
@@ -54,7 +54,7 @@
         "price" : 80999,
         "size" : 43,
         "brand" : "jordan",
-        "img" : "../images/7-AirJordanRetro1MidArticOrangeBlackToe.webp"
+        "img" : "../images/7-AirJordanRetro1MidArticOrangeBlackToe.jpg"
     },
     {
         "productId": 8,
@@ -62,7 +62,7 @@
         "price" : 65455,
         "size" : 42,
         "brand" : "jordan",
-        "img" : "../images/8-AirJordanRetro11HighBred.webp"
+        "img" : "../images/8-AirJordanRetro11HighBred.jpg"
     },
     {
         "productId": 9,
@@ -70,7 +70,7 @@
         "price" : 65239,
         "size" : 40,
         "brand" : "jordan",
-        "img" : "../images/9-AirJordanRetro3Katarina.webp"
+        "img" : "../images/9-AirJordanRetro3Katarina.jpg"
     },
     {
         "productId": 10,
@@ -78,7 +78,7 @@
         "price" : 65999,
         "size" : 42,
         "brand" : "jordan",
-        "img" : "../images/10-Jordan3RetroBlackCourtPurple.webp"
+        "img" : "../images/10-Jordan3RetroBlackCourtPurple.jpg"
     }
 
 ]

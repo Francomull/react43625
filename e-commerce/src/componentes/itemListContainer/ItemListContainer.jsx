@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import arrayProductos from '../json/articulos.json'
-import ItemList from '../itemList/ItemList'
+import ItemList from '../itemList/ItemList.jsx'
 
 
 
@@ -27,7 +27,7 @@ const ItemListContainer = () => {
 
         <div className='s1'>
             <div className='s3'>
-                    <ItemList Items={items} />
+                    <ItemList items={items} /> 
             </div>
         </div>
 
@@ -36,4 +36,4 @@ const ItemListContainer = () => {
     )
 }
 
-export default ItemListContainer
+export default ItemListContainer;

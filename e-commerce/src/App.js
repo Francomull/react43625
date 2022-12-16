@@ -1,9 +1,10 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import NavBar from './componentes/navBar/NavBar';
 import ItemListContainer from './componentes/itemListContainer/ItemListContainer';
-import cartWidget from './componentes/cartWidget/CartWidget';
-import home from './componentes/routes/Home/home';
+import ItemDetailContainer from "./componentes/itemDetailContainer/ItemDetailContainer";
+import Error404 from "./componentes/error404/Error404";
 
 
 
@@ -12,13 +13,21 @@ import home from './componentes/routes/Home/home';
 function App() {
   return (
 
-      <div className="App">
+      <BrowserRouter className="App">
 
-          <NavBar/>
-          <ItemListContainer greeting={"Bienvenidos a Dha-Leon"}/>
-         
+              <NavBar/>
 
-      </div>
+              <Routes>
+
+                <Route path={"/"} element= {<ItemListContainer/>}/>
+                <Route path={"/item/:productId"} element= {<ItemDetailContainer/>}/>
+                <Route path={"/category/:productId"} element= {<ItemListContainer/>}/>
+                <Route path={"*"} element= {<Error404/>}/>
+
+              </Routes> 
+
+      </BrowserRouter>
+          
 
   );
 }

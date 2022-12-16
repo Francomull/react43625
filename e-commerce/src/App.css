@@ -29,21 +29,25 @@ a:hover{
   padding-left: 10px;
 }
 
-
-.cards{
+.cardTodo{
   display: grid;
-  grid-template-areas: "card1 card2"
-                       "card3 card4" ;
+  justify-content: center;
 }
 
-.cards img{
-  height: 500px;
-  width: 400px;
-  border-radius: 5px;
+.cardTodo img{
+
+  border-style: none;
+
 }
 
-.cards div{
-  padding-bottom: 10px;
+.row{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+  gap: 20px;
+  padding-top: 20px ;
 }
+
+
 
 

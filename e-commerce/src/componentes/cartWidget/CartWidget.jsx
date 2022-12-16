@@ -7,7 +7,7 @@ const cartWidget = () =>{
 
         <div className="cart">
             <a href="#divCarrito">
-                <button id="verCarrito" class="btnCarrito1" > 5 🛒</button> 
+                <button id="verCarrito" className ="btnCarrito1" > 5 🛒</button> 
             </a>
         </div>
 
