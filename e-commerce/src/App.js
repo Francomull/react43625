@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import CartContext from './cartContext/CartContext'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import NavBar from './componentes/navBar/NavBar';
@@ -8,10 +9,13 @@ import Error404 from "./componentes/error404/Error404";
 
 
 
-
-
 function App() {
+
+  const [context, setContext] = useState([])
+
   return (
+
+    <CartContext.Provider value={{ context, setContext } }>
 
       <BrowserRouter className="App">
 
@@ -27,7 +31,8 @@ function App() {
               </Routes> 
 
       </BrowserRouter>
-          
+
+    </CartContext.Provider>      
 
   );
 }
