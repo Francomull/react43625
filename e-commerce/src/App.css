@@ -7,9 +7,6 @@ a{
   text-decoration: none;
 }
 
-a:hover{
-  color:#ff7f50
-}
 
 .navTodo {
   display: flex;
@@ -48,6 +45,12 @@ a:hover{
   padding-top: 20px ;
 }
 
+.button{
+   border-style: none;
+   border-radius: 5px ;
+}
 
-
+.button:hover{
+  color:#ff7f50
+}
 

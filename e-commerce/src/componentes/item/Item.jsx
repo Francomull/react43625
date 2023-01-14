@@ -5,6 +5,9 @@ const item = ({item})=>{
 
     return(
 
+        //contenido de la card
+
+
     <div className="cardTodo">
 
         <Link to={`/item/${item.productId}`}>
@@ -19,9 +22,14 @@ const item = ({item})=>{
 
                 </div>
 
+                
             </div>
 
          </Link>
+
+         <div>
+            <Link to={'/item/' + item.productId} className="button-efect ">Ver Detalles</Link>
+         </div>
 
     </div>
 
