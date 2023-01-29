@@ -1,13 +1,13 @@
 import React from "react";
 import Item from '../item/Item.jsx'
 
-const ItemList = ({items}) => {
+const ItemList = ({item}) => {
 
 
     return(
         <div className="row">
             {
-                items.map (item => <Item key={item.productId} item={item}/>)
+                item.map (product => <Item key={product.productId} product={product}/>)
             }
         </div>
     )

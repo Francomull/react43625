@@ -9,9 +9,11 @@ const navBar = () =>{
         <> 
             <div className="navTodo">
 
-                <NavLink to={"category/DhaLeon"} className="logo">
+                <div >
+                <NavLink to={'/'} className="logoNav"  ><img src={"https://i.pinimg.com/564x/aa/4e/e6/aa4ee697716a302e6be1da13b4e95137.jpg"} alt="logo" width={90}></img>
                     <p> Dha Leon </p>
                 </NavLink>
+                </div>
 
                 <nav className="nav1">
                     <ul className="navL">

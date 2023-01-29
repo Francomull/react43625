@@ -1,4 +1,4 @@
-[
+export const products = [
     {
         "productId": 1,
         "name" : "Air Jordan High Satin Snake",

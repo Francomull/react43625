@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
-    const { cart, cartTotal, removeItem, clear, sumaTotal } = useContext(CartContext);
+    const { cart, cartTotal, removeItem, clear, sumaTotal } = useContext (CartContext);
 
     if (cartTotal() === 0) {
         return (
@@ -39,9 +39,9 @@ const Cart = () => {
                         <tr key={item.id}>
                             <td><img src={item.img} alt={item.name} width={100} /></td>
                             <td className='align-middle'><b>{item.name}</b></td>
-                            <td className='align-middle'>{item.cantidad}</td>
-                            <td className='align-middle'>${item.cantidad * item.price}</td>
-                            <td className='align-middle'><Link onClick={() => { removeItem(item.id) }}><img src={"/img/trash3-fill.svg"} alt={"Eliminar Producto"} width={30} />
+                            <td className='align-middle'>{item.stock}</td>
+                            <td className='align-middle'>${item.stock * item.price}</td>
+                            <td className='align-middle'><Link onClick={() => { removeItem(item.productId) }}><img src={"/img/trash3-fill.svg"} alt={"Eliminar Producto"} width={30} />
                             </Link>
                             </td>
 

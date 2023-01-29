@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react";
-import arrayProductos from '../json/articulos.json'
-import ItemList from '../itemList/ItemList.jsx'
-
-
-
+import React from 'react'
+import { useEffect, useState } from 'react'
+import ItemList from '../itemList/ItemList'
+import { useParams } from 'react-router-dom'
+import Loader from '../loader/Loader'
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore'
 const ItemListContainer = () => {
-    const [items, setItems] = useState([]);
 
-    
-    useEffect(()=>{
-        const promesa = new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                resolve (arrayProductos)
-            }, 2000)
-        });
+    const [item, setItem]  = useState([])
+    const [loading, setLoading] = useState(true)
+    const { category } = useParams()
 
-        promesa.then((data)=>{
-            setItems (data);
+
+
+
+    useEffect(() => {
+        const db = getFirestore();
+        const queryCollection = collection(db, 'products');
+        const filterPrdoduct = category ? query(queryCollection, where("category", "==", category)) : queryCollection;
+
+        getDocs(filterPrdoduct).then((snapshot) => {
+             setItem(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+             setLoading(false)
         })
         
-    })
+    }, [category]);
 
 
 
     return (
-
-        <div className='s1'>
-            <div className='s3'>
-                    <ItemList items={items} /> 
+        <div className='container'>
+            <div className='row '>
+                { loading ?  <Loader /> : <ItemList item={item} />}
             </div>
         </div>
-
-        
-
     )
 }
 

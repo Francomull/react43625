@@ -1,34 +1,40 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ItemDetail from "../itemDetail/ItemDetail";
-import arrayProductos from '../json/articulos.json'
+import React from 'react'
+import ItemDetail from '../itemDetail/ItemDetail'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import Loader from '../loader/Loader'
+import { getDoc,doc,getFirestore } from 'firebase/firestore'
+
+const ItemDetailContainer = () => {
+
+    const [listProducts, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const {id} = useParams()
 
 
-const ItemDetailContainer = ()=>{
-    const [item, setItem] = useState([]);
-    const {productId} = useParams();
 
-    
-    useEffect(()=>{
-        const promesa = new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                resolve (arrayProductos.find(item => item.productId === parseInt(productId)))
-            }, 2000)
-        });
+    useEffect(() =>{
 
-        promesa.then((data)=>{
-            setItem (data);
-        }, [productId] )
+      const db =getFirestore()
+      const item= doc(db, "products" ,id)
+      getDoc(item).then((snapshot) => {
+        snapshot.exists()
+          setProducts({id:snapshot.productId, ...snapshot.data()})  
+          setLoading(false)
+      })
+      
+    },[productId])
+
+
+
+  return (
+    <div>
+        <div>
+              { loading ? <Loader/>: <ItemDetail listProducts={listProducts} />}      
+        </div> 
         
-    })
-    return (
-        <div className="container">       
-            <ItemDetail item={item}/>
-        </div>
-    )
-    
+     </div>       
+  )
 }
-
-
 
 export default ItemDetailContainer
