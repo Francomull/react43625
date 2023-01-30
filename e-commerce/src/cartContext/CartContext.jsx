@@ -1,6 +1,6 @@
-import React, { useState,createContext } from 'react'
-
-export const CartContext = createContext();
+import React, { useState, useContext} from 'react'
+ const CartContext = React.createContext([]);
+export const useCartContext = () => useContext(CartContext)
 
 
 
@@ -9,43 +9,61 @@ const CartContextProvider = ({ children }) => {
     
     const [cart , setCart] = useState([]);
 
-    const isInCart = (productId) =>{
-        return cart.some(x => x.productId === productId);
+    const isInCart = (id) => (cart.find((item) => item.id === id) ? true : false)
+
+
+     // put product
+  const addItem = (item, stock) => {
+    if (isInCart(item.id)) {
+      setCart(
+        cart.map((item) => {
+          return item.id === item.id
+            ? { ...item, stock: item.stock + stock }
+            : item;
+        })
+      );
+    } else {
+      setCart([...cart, { ...item, stock }]);
+    }
+  };
+
+
+    const removeItem = (id) => {
+        setCart(cart.filter((item) => item.id !== id));
+
     }
 
-    const addItem = (product , cantidad) => {
-        if(isInCart(product.productId)) {
-            let pos = cart.findIndex(x => x.productId === product.productId);
-            cart[pos].cantidad += cantidad;
-            setCart([...cart]);
+    const clear = () => setCart([]);
 
-        }else {
-            setCart([...cart, {...product, cantidad:cantidad}])
-        }
-    } 
-
-
-    const removeItem = (productId) => {
-        const product = cart.filter(x => x.productId !==productId)
-        setCart([...product]);
-
-    }
-
-    const clear = () =>{
-        setCart([]);
-    }
-
-    const cartTotal = () =>{
-        return cart.reduce((total , item) => total +=item.cantidad, 0 )
+    const cantidadItems = () =>{
+        return cart.reduce((total , item) => (total += item.stock),0)
     }
 
     const sumaTotal = () =>{
-        return cart.reduce((total , item) => total +=item.cantidad * item.price, 0 )
+        return cart.reduce((total , item) => (total += item.stock * item.price),0)
     }
+    const eliminarXunidad = (id) =>
+    setCart(
+      cart.map((item) => {
+        if (item.id === id) {
+          return { ...item, stock: item.stock - 1 };
+        } else {
+          return item;
+        }
+      })
+    );
 
 
     return (
-        <CartContext.Provider value={{cart , addItem , removeItem, clear, cartTotal, sumaTotal}} >
+        <CartContext.Provider value={{
+            cart ,
+             addItem 
+             , removeItem
+             , clear
+             , cantidadItems
+             , sumaTotal,
+             eliminarXunidad}}
+             >
             {children}
         </CartContext.Provider>
 

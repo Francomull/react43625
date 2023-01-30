@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import  CartContext from '../../cartContext/CartContext';
+import { useCartContext } from '../../cartContext/CartContext';
 import { useContext } from 'react';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
 
 const Checkout = () => {
 
-  const { cart, clear, sumaTotal } = useContext(CartContext);
+  const { cart, clear, sumaTotal } = useCartContext();
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");

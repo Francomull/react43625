@@ -7,30 +7,28 @@ import { getDoc,doc,getFirestore } from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
 
-    const [listProducts, setProducts] = useState([])
+    const [item, setItem] = useState([])
     const [loading, setLoading] = useState(true)
-    const {id} = useParams()
+    const { id } = useParams()
 
 
 
-    useEffect(() =>{
-
-      const db =getFirestore()
-      const item= doc(db, "products" ,id)
-      getDoc(item).then((snapshot) => {
-        snapshot.exists()
-          setProducts({id:snapshot.productId, ...snapshot.data()})  
+    useEffect(() => {
+      const querydb = getFirestore()
+      const queryDoc = doc(querydb, "items" ,id)
+      getDoc(queryDoc)
+      .then(res => setItem({id:id, ...res.data()}))
           setLoading(false)
-      })
+      },[id])
       
-    },[productId])
+    
 
 
 
   return (
     <div>
         <div>
-              { loading ? <Loader/>: <ItemDetail listProducts={listProducts} />}      
+              { loading ? <Loader/> : <ItemDetail item={item} />}      
         </div> 
         
      </div>       

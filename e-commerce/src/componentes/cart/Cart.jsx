@@ -1,70 +1,46 @@
-import React, { useContext } from 'react'
-import CartContext from '../../cartContext/CartContext'
+
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../cartContext/CartContext';
 
 const Cart = () => {
 
-    const { cart, cartTotal, removeItem, clear, sumaTotal } = useContext (CartContext);
+    const { cart, removeItem, clear, sumaTotal, eliminarXunidad } = useCartContext();
 
-    if (cartTotal() === 0) {
-        return (
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-md-12 text-center'>
-                        <div className='alert alert-danger' role='alert'>
-                            No se encontraron productos en el carrito!
-                        </div>
-                        <Link to={"/"} className="btn btn-primary">Volver a la página principal</Link>
-                    </div>
-                </div>
-            </div>
-        )
-    }
 
     return (
-        <div>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">&nbsp;</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {cart.map((item) =>
-                        <tr key={item.id}>
-                            <td><img src={item.img} alt={item.name} width={100} /></td>
-                            <td className='align-middle'><b>{item.name}</b></td>
-                            <td className='align-middle'>{item.stock}</td>
-                            <td className='align-middle'>${item.stock * item.price}</td>
-                            <td className='align-middle'><Link onClick={() => { removeItem(item.productId) }}><img src={"/img/trash3-fill.svg"} alt={"Eliminar Producto"} width={30} />
-                            </Link>
-                            </td>
-
-                        </tr>
-                    )}
-                    <tr>
-                        <td colSpan={2}>&nbsp;</td>
-                        <td><b>Total a pagar</b></td>
-                        <td><b>${sumaTotal()}</b></td>
-                        <td colSpan={2}>&nbsp;</td>
-                    </tr>
-
-                    <tr>
-                        <td colSpan={3}>&nbsp;</td>
-                        <td className="text-center"><Link onClick={clear} className="btn btn-warning m-4">
-                            Vaciar Carrito
-                        </Link>
-                        </td>
-                        <td ><Link to={"/checkout"} className='btn btn-warning m-4 btn-finalizarCompra'>Finalizar Compra</Link></td>
-                    </tr>
-                </tbody>
-            </table>
+        <>
+        <div className='cart2'>
+        {
+        cart.length === 0 ?
+                <div className='vacio'>
+                <h2>Tu carrito Está Vacio</h2>
+                </div> :
+                <div className='map'>
+        {
+        cart.map((item , index) =>
+        <div className='detail' key={index}>
+        <div className='container-cart'>
+        <div className='description'>
+        <h3 className='name'>{item.shoes}</h3>
+        <p className='precio'>Precio: {item.price} x Unidad</p>
+        <p className='cantidad'>Cantidad : {item.stock}</p>
+        <div className='buttons'>
+        <button className='decrease' disabled={item.stock <= 0 && removeItem(item.id)} onClick={() => eliminarXunidad(item.id)}> - </button>
+        <button onClick={() => removeItem(item.id)} className="button-cart">Eliminar Todo</button>
         </div>
+        </div>
+        </div>
+        </div>
+        )}
+        </div>
+        }
+        </div>
+        <div className='cont-vacio'>
+        <p className='precio-cart-24'>Total: ${sumaTotal()}</p>
+        <Link to ='/checkout'>Terminar compra</Link>
+        <button onClick={() => clear()}>Vaciar Carrito</button>
+        </div>
+        </>
     )
 }
 
