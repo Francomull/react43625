@@ -7,17 +7,6 @@ const ItemCount = ({ stock, onAdd }) => {
     const [contador, setContador] = useState(1)
     const [vendido, setVendido] = useState(false)
 
-
-    // const addToCart = (cantidad) => {
-    //     if (count <= itemStock) {
-    //         setCount(1);
-    //         setItemStock(itemStock - cantidad);
-    //         setVendido(true);
-    //         onAdd(cantidad)
-    //     }
-
-    // }
-
   
     const increanse = () => {
       setContador(contador + 1)
@@ -35,10 +24,10 @@ const ItemCount = ({ stock, onAdd }) => {
     return (
         <>
             <div className="row text-center" >
-                <div className="col">
-                <button className="btn btn-danger m-2" onClick={decrement}>-</button>
-                <button className="btn btn-primary m-2"> Cantidad : {contador}</button>
-                <button className="btn btn-success  m-2" onClick={increanse}>+</button>
+                <div className="col" style={{display:'flex'}}>
+                    <button className="btn btn-danger m-2" onClick={decrement}>-</button>
+                    <button className="btn btn-primary m-2"> Cantidad : {contador}</button>
+                    <button className="btn btn-success  m-2" onClick={increanse}>+</button>
 
                     
                 </div>

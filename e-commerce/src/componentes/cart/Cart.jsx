@@ -10,30 +10,35 @@ const Cart = () => {
     return (
         <>
         <div className='cart2'>
-        {
-        cart.length === 0 ?
-                <div className='vacio'>
-                <h2>Tu carrito Está Vacio</h2>
-                </div> :
-                <div className='map'>
-        {
-        cart.map((item , index) =>
-        <div className='detail' key={index}>
-        <div className='container-cart'>
-        <div className='description'>
-        <h3 className='name'>{item.shoes}</h3>
-        <p className='precio'>Precio: {item.price} x Unidad</p>
-        <p className='cantidad'>Cantidad : {item.stock}</p>
-        <div className='buttons'>
-        <button className='decrease' disabled={item.stock <= 0 && removeItem(item.id)} onClick={() => eliminarXunidad(item.id)}> - </button>
-        <button onClick={() => removeItem(item.id)} className="button-cart">Eliminar Todo</button>
-        </div>
-        </div>
-        </div>
-        </div>
-        )}
-        </div>
-        }
+          {
+            cart.length === 0 ? 
+            <div className='vacio'>
+              <h2>El carrito esta vacio</h2>
+            </div>
+            :
+            <div className='cart-map'>
+              {
+                cart.map((item, indice) => 
+                <div className='detail-cont' key={indice}>
+                  <div className='cardCarrito'>
+                    <div className='descriptionArticle'>
+                      <h3 className='name-cart'>{item.brand}</h3>
+                      <img src={item.img} alt={item.img}  className='img-cart' style={{width:'220px'}}/>
+                      <p>Precio : ${item.price}</p>
+                      <p>Cantidad : {item.stock}</p>
+                      <div className='content-button'>
+                      <button className='decrease' disabled={item.stock <= 0 && removeItem(item.id)} onClick={() => eliminarXunidad(item.id)}> - </button>
+                        <button className='button-eliminar' onClick={()=>removeItem(item.id)}>Eliminar Todo</button>
+                        <p>{sumaTotal()}</p>
+                        <p onClick={clear}>Vaciar Carrito</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                )
+              }
+            </div>
+          }
         </div>
         <div className='cont-vacio'>
         <p className='precio-cart-24'>Total: ${sumaTotal()}</p>
